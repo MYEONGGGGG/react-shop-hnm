@@ -71,3 +71,8 @@
     padding-top: 3px;
     padding-right: 5px;
 }
+
+.product-img {
+    display: flex;
+    justify-content: flex-end;
+}

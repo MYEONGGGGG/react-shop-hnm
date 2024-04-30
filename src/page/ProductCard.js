@@ -1,9 +1,16 @@
 import React from "react";
+import {useNavigate} from "react-router-dom";
 
 const ProductCard = ({ item }) => {
 
+    const navigate = useNavigate();
+
+    const showDetail = () => {
+      navigate(`/product/${item.id}`);
+    };
+
     return (
-        <div className="pb-2">
+        <div className="pb-2" onClick={showDetail}>
             <img src={item?.img} className="w-100 p-card" alt={item?.id}/>
             <div className="fw-lighter">
                 <label className="w-75 ps-1 item-choice">Conscious choice</label>
