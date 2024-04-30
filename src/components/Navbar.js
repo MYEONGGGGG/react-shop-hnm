@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
-import {faSearch} from "@fortawesome/free-solid-svg-icons";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
     const menuList = ['여성', 'Divided', '남성', '신생아/유아', '아동', 'H&M Home', 'Sale', '지속가능성'];
@@ -22,11 +22,11 @@ const Navbar = () => {
             <div className="menu-div">
                 <ul className="menu-list">
                     {menuList.map((menu) => (
-                        <li> {menu}</li>
+                        <li key={menu}> {menu}</li>
                     ))}
                 </ul>
-                <div className="search-div">
-                    <FontAwesomeIcon icon={faSearch}/>
+                <div className="search-bar">
+                    <i><FontAwesomeIcon icon={faSearch}/></i>
                     <input type="text"/>
                 </div>
             </div>
