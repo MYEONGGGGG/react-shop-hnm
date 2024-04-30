@@ -4,7 +4,7 @@ const ProductCard = ({ item }) => {
 
     return (
         <div className="pb-2">
-            <img src={item?.img} className="w-100" alt={item?.id}/>
+            <img src={item?.img} className="w-100 p-card" alt={item?.id}/>
             <div className="fw-lighter">
                 <label className="w-75 ps-1 item-choice">Conscious choice</label>
                 <label className="w-25 text-end pe-2">

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Col, Container, Row} from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import ProductCard from "./ProductCard";
 
 const ProductAll = () => {
@@ -19,7 +19,7 @@ const ProductAll = () => {
         for (let i=0; i<productList.length; i++) {
 
             list.push(
-                <Col lg={3}>
+                <Col lg={3} key={productList[i].id}>
                     <ProductCard item={productList[i]}/>
                 </Col>
             );

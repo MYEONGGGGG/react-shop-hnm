@@ -2,16 +2,19 @@
     display: flex;
     justify-content: flex-end;
     margin: 20px;
+    cursor: pointer;
 }
 
 .nav-section{
     display: flex;
     justify-content: center;
+    cursor: pointer;
 }
 
 .menu-div {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    cursor: pointer;
 }
 .menu-list {
     display: flex;
@@ -27,11 +30,13 @@
     border-radius: 5px;
     border: solid 1px rgba(0, 0, 0, 0.3);
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
     z-index: 1;
     opacity: 1;
     margin-top: 5px;
+    margin-right: 10px;
+    margin-left: 19vw;
 }
 .search-bar i {
     text-align: left;
@@ -56,4 +61,13 @@
 }
 .item-name {
     color: red;
+}
+
+.p-card {
+    cursor: pointer;
+}
+
+.icon-user {
+    padding-top: 3px;
+    padding-right: 5px;
 }
