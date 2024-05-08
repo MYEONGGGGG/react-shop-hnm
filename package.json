@@ -20,8 +20,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "npm-run-all -p react-start db",
-    "react-start": "react-scripts start",
+    "start-all": "npm-run-all -p react-start db",
+    "start": "react-scripts start",
     "db": "json-server --watch db.json --port 3001",
     "build": "react-scripts build",
     "test": "react-scripts test",

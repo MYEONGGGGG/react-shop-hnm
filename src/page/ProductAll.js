@@ -8,14 +8,17 @@ const ProductAll = () => {
     const [productList, setProductList] = useState([]);
     const [query, setQuery] = useSearchParams();
 
+    // API 호출
     const getProducts = async () => {
       let searchQuery = query.get('q') || '';
-      let url = `http://localhost:3001/products?q=${searchQuery}`;
+      let url = `https://my-json-server.typicode.com/cme95/shop-hnm/products?q=${searchQuery}`;
+      // console.log(url);
       let response = await fetch(url);
       let data = await response.json();
       setProductList(data);
     };
 
+    // 함수형 렌더링
     // const rendering = () => {
     //     const list = [];
     //
@@ -31,6 +34,7 @@ const ProductAll = () => {
     //     return list;
     // };
 
+    // query가 바뀔때마다 api 호출
     useEffect(() => {
       getProducts();
     }, [query]);
@@ -40,7 +44,7 @@ const ProductAll = () => {
             <Container>
                 <Row>
                     {productList.map((menu) => (
-                        <Col lg={3}>
+                        <Col lg={3} key={menu.title}>
                             <ProductCard item={menu}/>
                         </Col>
                     ))}
@@ -48,6 +52,7 @@ const ProductAll = () => {
             </Container>
         </div>
 
+        // 함수형 렌더링
         // <div>
         //     <Container>
         //         <Row>
