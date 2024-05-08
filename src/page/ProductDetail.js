@@ -8,7 +8,7 @@ const ProductDetail = () => {
     const [product, setProduct] = useState(null);
 
     const getProductDetail = async () => {
-        let url = `https://my-json-server.typicode.com/cme95/shop-hnm/products/${id}`;
+        let url = process.env.REACT_APP_API_URL + `products/${id}`;
         let response = await fetch(url);
         let data = await response.json();
         setProduct(data);
