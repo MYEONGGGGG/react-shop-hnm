@@ -1,26 +1,24 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Route, Routes} from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import ProductAll from './page/ProductAll';
+import Cart from "./page/Cart";
 import Login from './page/Login';
 import Navbar from './components/Navbar';
-import {useEffect, useState} from "react";
 import PrivateRoute from "./route/PrivateRoute";
+import { useSelector } from "react-redux";
 
 function App() {
-  const [authenticate, setAuthenticate] = useState(false);
-
-  useEffect(() => {
-      // console.log('login status = ', authenticate);
-  },[authenticate]);
+  const authenticate = useSelector(state => state.userInfo.auth);
 
   return (
     <div>
       <Navbar authenticate={authenticate}/>
       <Routes>
-        <Route path="/" element={<ProductAll/>} />
-        <Route path="/login" element={<Login setAuthenticate={setAuthenticate}/>} />
-        <Route path="/product/:id" element={<PrivateRoute authenticate={authenticate}/>} />
+          <Route path="/" element={<ProductAll/>} />
+          <Route path="/cart" element={<Cart/>} />
+          <Route path="/login" element={<Login/>} />
+          <Route path="/product/:id" element={<PrivateRoute authenticate={authenticate}/>} />
       </Routes>
     </div>
   );

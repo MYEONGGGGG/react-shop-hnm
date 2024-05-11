@@ -1,19 +1,39 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faShoppingBag } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const Navbar = ({authenticate}) => {
     const menuList = ['여성', 'Divided', '남성', '신생아/유아', '아동', 'H&M Home', 'Sale', '지속가능성'];
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const goToLogin = () => {
-      navigate('/login');
+        // 로그인 상태라면
+        if (authenticate) {
+            // 로그아웃 후 메인화면 유지
+            dispatch({ type: "LOGOUT", payload: {id: null, pwd: null, auth: true} });
+            // 선택한 상품 및 장바구니 비우기
+            dispatch({ type: "DESELECTED" });
+            dispatch({ type: "RESET_CART" });
+            goToMain();
+        }
+
+        // 로그아웃 상태라면
+        else {
+            // 로그인 페이지로 이동
+            navigate('/login');
+        }
     };
 
     const goToMain = () => {
         navigate('/');
+    };
+
+    const goToCart = () => {
+        navigate('/cart');
     };
 
     const search = (event) => {
@@ -28,14 +48,18 @@ const Navbar = ({authenticate}) => {
 
     return (
         <div>
-            <div>
-                <div className="login-button" onClick={goToLogin}>
+            <div className="submenu">
+                <div className="login-button" onClick={ goToLogin }>
                     <FontAwesomeIcon icon={faUser} className="icon-user"/>
                     <div className="fw-bold">{authenticate === false?'로그인':'로그아웃'}</div>
                 </div>
+                <div className="login-button" onClick={ goToCart }>
+                    <FontAwesomeIcon icon={faShoppingBag} className="icon-user"/>
+                    <div className="fw-bold">장바구니</div>
+                </div>
             </div>
 
-            <div className="nav-section" onClick={goToMain}>
+            <div className="nav-section" onClick={ goToMain }>
                 <img width={100}
                      src="https://cleanclothes.org/image-repository/livingwage-living-wage-images-h-m-logo/@@images/image.jpeg"
                      alt="HnM" />

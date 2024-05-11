@@ -1,21 +1,22 @@
 import React from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
-const Login = ({setAuthenticate}) => {
+const Login = () => {
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const loginUser = (event) => {
-        // console.log(event);
         event.preventDefault();
-        setAuthenticate(true);
+        dispatch({ type: "LOGIN", payload: {id: 'id@mail.com', pwd: '1234', auth: true} });
         navigate('/');
     };
 
     return (
         <Container>
-            <Form onSubmit={loginUser}>
+            <Form onSubmit={ loginUser }>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" placeholder="Enter email"></Form.Control>
